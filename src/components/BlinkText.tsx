@@ -37,12 +37,14 @@ const BlinkText: React.FC<BlinkTextProps> = ({
   }, []);
 
   return (
-    <Tag
-      ref={ref as React.Ref<any>}
-      className={className}
-      aria-label={text}
-    >
-      {text.split("").map((char, i) => (
+    React.createElement(
+      Tag,
+      {
+        ref: ref as React.Ref<HTMLElement>,
+        className,
+        "aria-label": text,
+      },
+      text.split("").map((char, i) => (
         <span
           key={i}
           style={{
@@ -53,8 +55,8 @@ const BlinkText: React.FC<BlinkTextProps> = ({
         >
           {char === " " ? "\u00A0" : char}
         </span>
-      ))}
-    </Tag>
+      ))
+    )
   );
 };
 

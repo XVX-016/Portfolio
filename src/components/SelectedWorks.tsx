@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import BlinkText from "./BlinkText";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
+import work1 from "@/assets/f1.jpg";
+import work2 from "@/assets/svamitva.webp";
+import work3 from "@/assets/tamracraft.png";
+import work4 from "@/assets/adsc-sim.jpeg";
 
 interface Work {
     title: string;
@@ -27,7 +28,7 @@ const works: Work[] = [
         width: "col-span-12 md:col-span-6"
     },
     {
-        title: "SVAMITVA Village",
+        title: "SVAMITVA",
         category: "GEOSPATIAL / GIS",
         year: "2023",
         image: work2,
@@ -76,7 +77,7 @@ const MagneticArrow: React.FC = () => {
 };
 
 const SelectedWorks: React.FC = () => {
-    const container = {
+    const container: Variants = {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
@@ -86,20 +87,20 @@ const SelectedWorks: React.FC = () => {
         }
     };
 
-    const item = {
+    const item: Variants = {
         hidden: { opacity: 0, y: 30 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+        show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
     };
 
     return (
-        <section className="py-32 px-6 md:px-16" id="works">
+        <section className="py-14 md:py-16 px-6 md:px-16" id="works">
             <div className="max-w-[1400px] mx-auto">
-                <div className="flex items-baseline justify-between mb-24 border-b border-border/10 pb-12">
+                <div className="flex items-baseline justify-between mb-10 md:mb-12 border-b border-border/10 pb-5 md:pb-6">
                     <div className="flex items-baseline gap-4">
                         <BlinkText
                             as="h2"
                             text="Selected Works"
-                            className="text-4xl md:text-7xl font-bold tracking-tighter text-foreground"
+                            className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground"
                             charDelay={40}
                         />
                     </div>
@@ -113,7 +114,7 @@ const SelectedWorks: React.FC = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lg:gap-8"
                 >
                     {works.map((work) => (
                         <motion.a
@@ -124,7 +125,7 @@ const SelectedWorks: React.FC = () => {
                             variants={item}
                             className="group relative flex flex-col cursor-pointer overflow-hidden rounded-xl border border-white/5 bg-[#111111] transition-all duration-500 hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                         >
-                            <div className="relative aspect-[16/10] overflow-hidden grayscale contrast-[1.1] transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-[1.01]">
+                            <div className="relative aspect-[16/8] overflow-hidden grayscale contrast-[1.1] transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-[1.01]">
                                 <img
                                     src={work.image}
                                     alt={work.title}
@@ -135,9 +136,9 @@ const SelectedWorks: React.FC = () => {
                                 <MagneticArrow />
                             </div>
 
-                            <div className="p-8 md:p-10 flex flex-col justify-between flex-grow">
+                            <div className="p-5 md:p-6 flex flex-col justify-between flex-grow">
                                 <div>
-                                    <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center justify-between mb-2.5">
                                         <span className="text-[10px] tracking-[0.3em] text-muted-foreground font-mono uppercase">
                                             {work.category}
                                         </span>
@@ -145,10 +146,10 @@ const SelectedWorks: React.FC = () => {
                                             {work.year}
                                         </span>
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-3">
+                                    <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white mb-2">
                                         {work.title}
                                     </h3>
-                                    <p className="text-xs md:text-sm text-white/40 leading-relaxed max-w-sm font-mono uppercase tracking-wider">
+                                    <p className="text-[11px] md:text-xs text-white/40 leading-relaxed max-w-sm font-mono uppercase tracking-wider">
                                         {work.description}
                                     </p>
                                 </div>

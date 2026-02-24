@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PhysicsPlayground from "./PhysicsPlayground";
 import heroImg1 from "@/assets/1.jpg";
@@ -7,16 +7,31 @@ import heroImg2 from "@/assets/2.png";
 const ThemeToggle = () => {
     const [isDark, setIsDark] = useState(true);
 
+    useEffect(() => {
+        const persistedTheme = localStorage.getItem("theme-mode");
+        const shouldUseLight = persistedTheme
+            ? persistedTheme === "light"
+            : window.matchMedia("(prefers-color-scheme: light)").matches;
+
+        setIsDark(!shouldUseLight);
+        document.documentElement.classList.toggle("light-mode", shouldUseLight);
+        document.body.classList.toggle("light-mode", shouldUseLight);
+    }, []);
+
     const toggle = () => {
-        setIsDark(!isDark);
-        document.documentElement.classList.toggle("light-mode");
-        document.body.classList.toggle("light-mode");
+        const nextIsDark = !isDark;
+        const shouldUseLight = !nextIsDark;
+
+        setIsDark(nextIsDark);
+        document.documentElement.classList.toggle("light-mode", shouldUseLight);
+        document.body.classList.toggle("light-mode", shouldUseLight);
+        localStorage.setItem("theme-mode", shouldUseLight ? "light" : "dark");
     };
 
     return (
         <button
             onClick={toggle}
-            className="relative w-[50px] h-[26px] rounded-full border transition-colors duration-500 flex items-center px-[3px] cursor-pointer"
+            className="relative h-[26px] w-[50px] cursor-pointer rounded-full border px-[3px] transition-colors duration-500"
             style={{
                 backgroundColor: isDark ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.6)",
                 borderColor: isDark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)",
@@ -43,50 +58,14 @@ const ThemeToggle = () => {
 const HeroSection = () => {
     return (
         <section className="relative flex flex-col">
-            {/* ===== HERO VIEWPORT ===== */}
-            <div className="relative h-screen flex flex-col justify-end">
-                {/* Physics lives here — absolutely positioned, full coverage */}
-                <PhysicsPlayground />
-
-                {/* ===== GLOBAL HEADER — highest z-index ===== */}
-                <motion.nav
-                    className="absolute top-0 left-0 right-0 flex items-center justify-between px-6 md:px-16 py-6 z-40"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                >
-                    {/* Left: Email */}
-                    <a
-                        href="mailto:tanmmay2005@gmail.com"
-                        className="text-[10px] md:text-[11px] tracking-[0.2em] text-white/50 hover:text-white transition-colors uppercase font-mono"
-                        style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                    >
-                        tanmmay2005@gmail.com
-                    </a>
-
-                    {/* Center: Role text */}
-                    <div className="hidden lg:block absolute left-1/2 -translate-x-1/2">
-                        <span
-                            className="text-[11px] tracking-[0.35em] text-white/60 uppercase whitespace-nowrap"
-                            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                        >
-                            ML/AI Engineer based in Delhi, India
-                        </span>
-                    </div>
-
-                    {/* Right: Theme Toggle */}
-                    <ThemeToggle />
-                </motion.nav>
-
-                {/* ===== NAME — bottom-left, behind pills ===== */}
+            <div className="relative h-screen overflow-hidden">
                 <motion.h1
-                    className="relative z-[1] px-6 md:px-16 pb-8 select-none"
+                    className="text-foreground absolute bottom-4 left-0 z-0 select-none px-5 md:bottom-8 md:px-16"
                     style={{
-                        fontSize: "clamp(3rem, 11vw, 14rem)",
+                        fontSize: "clamp(2.4rem, 11vw, 14rem)",
                         fontWeight: 800,
                         lineHeight: 0.88,
                         letterSpacing: "-0.04em",
-                        color: "white",
                         fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
                     }}
                     initial={{ opacity: 0, y: 40 }}
@@ -97,29 +76,56 @@ const HeroSection = () => {
                     <br />
                     KANHAIYA
                 </motion.h1>
+
+                <PhysicsPlayground />
+
+                <motion.nav
+                    className="absolute left-0 right-0 top-0 z-40 flex items-center justify-between px-5 py-5 md:px-16 md:py-6"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                >
+                    <a
+                        href="mailto:xvx016xc@gmail.com"
+                        className="text-[10px] uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white md:text-[11px]"
+                        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                        xvx016xc@gmail.com
+                    </a>
+
+                    <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
+                        <span
+                            className="whitespace-nowrap text-[11px] uppercase tracking-[0.35em] text-white/60"
+                            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                        >
+                            ML/AI Engineer based in Delhi, India
+                        </span>
+                    </div>
+
+                    <ThemeToggle />
+                </motion.nav>
             </div>
 
-            {/* ===== IMAGES BELOW NAME ===== */}
             <motion.div
-                className="w-full px-6 md:px-16 pb-24 pt-2"
+                className="w-full px-5 pb-12 pt-2 md:px-16 md:pb-24"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, ease: "easeOut" }}
             >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[1400px] mx-auto">
-                    <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-white/5 group">
+                <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-4 md:grid-cols-2">
+                    <div className="group relative aspect-[16/10] overflow-hidden rounded-xl border border-white/5 md:aspect-[16/9]">
                         <img
                             src={heroImg1}
                             alt="Aerodynamic engineering"
-                            className="w-full h-full object-cover grayscale contrast-[1.2] opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700"
+                            className="h-full w-full object-cover grayscale contrast-[1.2] opacity-70 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100"
                         />
                     </div>
-                    <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-white/5 group">
+                    <div className="group relative aspect-[16/10] overflow-hidden rounded-xl border border-white/5 md:aspect-[16/9]">
                         <img
                             src={heroImg2}
                             alt="System architecture"
-                            className="w-full h-full object-cover grayscale contrast-[1.2] opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700"
+                            className="h-full w-full object-cover grayscale contrast-[1.2] opacity-70 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100"
                         />
                     </div>
                 </div>
