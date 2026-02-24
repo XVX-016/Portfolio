@@ -87,7 +87,7 @@ const HeroSection = () => {
                 >
                     <a
                         href="mailto:xvx016xc@gmail.com"
-                        className="text-[10px] uppercase tracking-[0.2em] text-foreground/60 transition-colors hover:text-foreground md:text-[11px]"
+                        className="text-[10px] uppercase tracking-[0.2em] text-foreground opacity-75 transition-colors hover:opacity-100 md:text-[11px]"
                         style={{ fontFamily: "'JetBrains Mono', monospace" }}
                     >
                         xvx016xc@gmail.com
@@ -95,7 +95,7 @@ const HeroSection = () => {
 
                     <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
                         <span
-                            className="whitespace-nowrap text-[11px] uppercase tracking-[0.35em] text-foreground/70"
+                            className="whitespace-nowrap text-[11px] uppercase tracking-[0.35em] text-foreground opacity-80"
                             style={{ fontFamily: "'JetBrains Mono', monospace" }}
                         >
                             ML/AI Engineer based in Delhi, India
@@ -107,7 +107,7 @@ const HeroSection = () => {
 
                 <div className="absolute left-1/2 top-[54px] z-40 -translate-x-1/2 lg:hidden">
                     <span
-                        className="whitespace-nowrap text-[9px] uppercase tracking-[0.2em] text-foreground/70"
+                        className="whitespace-nowrap text-[12px] font-semibold uppercase tracking-[0.12em] text-foreground opacity-90"
                         style={{ fontFamily: "'JetBrains Mono', monospace" }}
                     >
                         ML/AI Engineer based in Delhi, India
