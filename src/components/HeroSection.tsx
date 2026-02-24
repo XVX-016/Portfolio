@@ -87,7 +87,7 @@ const HeroSection = () => {
                 >
                     <a
                         href="mailto:xvx016xc@gmail.com"
-                        className="text-[10px] uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white md:text-[11px]"
+                        className="text-[10px] uppercase tracking-[0.2em] text-foreground/60 transition-colors hover:text-foreground md:text-[11px]"
                         style={{ fontFamily: "'JetBrains Mono', monospace" }}
                     >
                         xvx016xc@gmail.com
@@ -95,7 +95,7 @@ const HeroSection = () => {
 
                     <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
                         <span
-                            className="whitespace-nowrap text-[11px] uppercase tracking-[0.35em] text-white/60"
+                            className="whitespace-nowrap text-[11px] uppercase tracking-[0.35em] text-foreground/70"
                             style={{ fontFamily: "'JetBrains Mono', monospace" }}
                         >
                             ML/AI Engineer based in Delhi, India
@@ -104,6 +104,15 @@ const HeroSection = () => {
 
                     <ThemeToggle />
                 </motion.nav>
+
+                <div className="absolute left-1/2 top-[54px] z-40 -translate-x-1/2 lg:hidden">
+                    <span
+                        className="whitespace-nowrap text-[9px] uppercase tracking-[0.2em] text-foreground/70"
+                        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                        ML/AI Engineer based in Delhi, India
+                    </span>
+                </div>
             </div>
 
             <motion.div
@@ -118,14 +127,14 @@ const HeroSection = () => {
                         <img
                             src={heroImg1}
                             alt="Aerodynamic engineering"
-                            className="h-full w-full object-cover grayscale contrast-[1.2] opacity-70 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100"
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                         />
                     </div>
                     <div className="group relative aspect-[16/10] overflow-hidden rounded-xl border border-white/5 md:aspect-[16/9]">
                         <img
                             src={heroImg2}
                             alt="System architecture"
-                            className="h-full w-full object-cover grayscale contrast-[1.2] opacity-70 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100"
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                         />
                     </div>
                 </div>

@@ -53,7 +53,7 @@ const BlinkText: React.FC<BlinkTextProps> = ({
           }}
           aria-hidden="true"
         >
-          {char === " " ? "\u00A0" : char}
+          {char}
         </span>
       ))
     )
