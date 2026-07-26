@@ -55,10 +55,10 @@ const Footer: React.FC = () => {
             charDelay={30}
           />
           <a
-            href="mailto:xvx016xc@gmail.com"
+            href="mailto:tanmmay2005@gmail.com"
             className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-foreground md:text-sm md:tracking-[0.4em]"
           >
-            XVX016XC@GMAIL.COM -&gt;
+            TANMMAY2005@GMAIL.COM -&gt;
           </a>
         </motion.div>
 

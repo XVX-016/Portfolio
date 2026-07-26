@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Lenis from "lenis";
 import HeroSection from "@/components/HeroSection";
 import SelectedWorks from "@/components/SelectedWorks";
+import WorkExperience from "@/components/WorkExperience";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -33,6 +34,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <HeroSection />
       <SelectedWorks />
+      <WorkExperience />
       <Footer />
     </div>
   );

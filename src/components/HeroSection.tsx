@@ -86,11 +86,11 @@ const HeroSection = () => {
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                 >
                     <a
-                        href="mailto:xvx016xc@gmail.com"
+                        href="mailto:tanmmay2005@gmail.com"
                         className="text-[10px] uppercase tracking-[0.2em] text-foreground opacity-75 transition-colors hover:opacity-100 md:text-[11px]"
                         style={{ fontFamily: "'JetBrains Mono', monospace" }}
                     >
-                        xvx016xc@gmail.com
+                        tanmmay2005@gmail.com
                     </a>
 
                     <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
