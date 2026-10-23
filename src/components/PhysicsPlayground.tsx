@@ -13,13 +13,31 @@ type SkillSpec = {
 };
 
 const SKILLS: SkillSpec[] = [
-    { skill: "VECTOR DB", mark: "VECTOR DB", shape: "pill", width: 170, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
-    { skill: "GEN AI", mark: "GEN AI", shape: "pill", width: 160, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    // ML / AI
     { skill: "AI/ML", mark: "AI/ML", shape: "pill", width: 154, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
-    { skill: "SYSTEM ARCHITECTURE", mark: "SYSTEM ARCHITECTURE", shape: "pill", width: 250, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
-    { skill: "RAG", mark: "RAG", shape: "pill", width: 140, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
+    { skill: "GEN AI", mark: "GEN AI", shape: "pill", width: 160, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
     { skill: "NEURAL NETS", mark: "NEURAL NETS", shape: "pill", width: 200, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
     { skill: "CNN", mark: "CNN", shape: "pill", width: 140, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "RAG", mark: "RAG", shape: "pill", width: 140, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
+    { skill: "VECTOR DB", mark: "VECTOR DB", shape: "pill", width: 170, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
+    { skill: "AGENTIC AI", mark: "AGENTIC AI", shape: "pill", width: 185, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "LOCAL LLM", mark: "LOCAL LLM", shape: "pill", width: 175, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "ML INFRA", mark: "ML INFRA", shape: "pill", width: 165, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "GEOSPATIAL AI", mark: "GEOSPATIAL AI", shape: "pill", width: 215, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    // Backend
+    { skill: "SYSTEM ARCHITECTURE", mark: "SYSTEM ARCHITECTURE", shape: "pill", width: 280, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "REST API", mark: "REST API", shape: "pill", width: 160, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
+    { skill: "POSTGRESQL", mark: "POSTGRESQL", shape: "pill", width: 185, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "DOCKER", mark: "DOCKER", shape: "pill", width: 155, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
+    // Graphics
+    { skill: "PATH TRACING", mark: "PATH TRACING", shape: "pill", width: 205, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "VULKAN", mark: "VULKAN", shape: "pill", width: 155, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "CUDA", mark: "CUDA", shape: "pill", width: 140, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
+    // Frontend / Mobile
+    { skill: "FLUTTER", mark: "FLUTTER", shape: "pill", width: 155, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    { skill: "REACT", mark: "REACT", shape: "pill", width: 148, height: 52, fill: "rgba(22,22,22,0.96)", stroke: "rgba(255,255,255,0.82)", text: "#FFFFFF" },
+    // Tools
+    { skill: "OPEN SOURCE", mark: "OPEN SOURCE", shape: "pill", width: 200, height: 52, fill: "rgba(245,245,245,0.96)", stroke: "#0A0A0A", text: "#0A0A0A" },
 ];
 
 const PhysicsPlayground = () => {
@@ -54,8 +72,8 @@ const PhysicsPlayground = () => {
             const cw = Math.max(bounds.width, 320);
             const ch = Math.max(bounds.height, 220);
             const isMobile = cw < 768;
-            const scale = isMobile ? 0.62 : 1;
-            const visibleSkills = isMobile ? SKILLS.slice(0, 6) : SKILLS;
+            const scale = isMobile ? 0.46 : 1;
+            const visibleSkills = SKILLS;
 
             const wallThickness = 56;
             const sideInset = isMobile ? 14 : 10;
@@ -89,14 +107,14 @@ const PhysicsPlayground = () => {
                 el.style.visibility = "visible";
                 el.style.whiteSpace = "nowrap";
                 const mobileFontSize =
-                    spec.mark.length >= 14 ? "0.62rem" :
-                    spec.mark.length >= 10 ? "0.68rem" :
-                    spec.mark.length >= 7 ? "0.74rem" :
-                    "0.8rem";
+                    spec.mark.length >= 16 ? "0.50rem" :
+                    spec.mark.length >= 12 ? "0.55rem" :
+                    spec.mark.length >= 8 ? "0.60rem" :
+                    "0.65rem";
                 el.style.fontSize = isMobile ? mobileFontSize : "1.04rem";
-                el.style.letterSpacing = isMobile ? "0.04em" : "0.1em";
-                el.style.paddingLeft = isMobile ? "10px" : "16px";
-                el.style.paddingRight = isMobile ? "10px" : "16px";
+                el.style.letterSpacing = isMobile ? "0.03em" : "0.1em";
+                el.style.paddingLeft = isMobile ? "7px" : "16px";
+                el.style.paddingRight = isMobile ? "7px" : "16px";
                 el.style.transform = `translate3d(${x - width / 2}px, ${y}px, 0)`;
             }
 
@@ -214,7 +232,7 @@ const PhysicsPlayground = () => {
                 ref={fallbackRef}
                 className="absolute inset-0 z-0 flex flex-wrap content-start gap-2 p-3 transition-opacity duration-300 md:gap-3 md:p-4"
             >
-                {SKILLS.slice(0, 6).map((skill) => (
+                {SKILLS.map((skill) => (
                     <div
                         key={`fallback-${skill.skill}`}
                         className="inline-flex select-none items-center justify-center px-4 py-2 text-[12px] font-bold uppercase tracking-[0.08em] md:text-[14px]"

@@ -123,18 +123,18 @@ const HeroSection = () => {
                 transition={{ duration: 1, ease: "easeOut" }}
             >
                 <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-4 md:grid-cols-2">
-                    <div className="group relative aspect-[16/10] overflow-hidden rounded-xl border border-white/5 md:aspect-[16/9]">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/5 md:aspect-[16/9]">
                         <img
                             src={heroImg1}
                             alt="Aerodynamic engineering"
-                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                            className="h-full w-full object-cover"
                         />
                     </div>
-                    <div className="group relative aspect-[16/10] overflow-hidden rounded-xl border border-white/5 md:aspect-[16/9]">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/5 md:aspect-[16/9]">
                         <img
                             src={heroImg2}
                             alt="System architecture"
-                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                            className="h-full w-full object-cover"
                         />
                     </div>
                 </div>

@@ -3,6 +3,9 @@ import Lenis from "lenis";
 import HeroSection from "@/components/HeroSection";
 import SelectedWorks from "@/components/SelectedWorks";
 import WorkExperience from "@/components/WorkExperience";
+import StackTeaser from "@/components/StackTeaser";
+import WritingTeaser from "@/components/WritingTeaser";
+import Certifications from "@/components/Certifications";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -35,6 +38,9 @@ const Index = () => {
       <HeroSection />
       <SelectedWorks />
       <WorkExperience />
+      <StackTeaser />
+      <WritingTeaser />
+      <Certifications />
       <Footer />
     </div>
   );

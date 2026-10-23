@@ -64,6 +64,24 @@ const Footer: React.FC = () => {
 
         <div className="flex flex-col items-start justify-between gap-9 border-t border-white/5 pt-8 md:flex-row md:items-end md:gap-12 md:pt-12">
           <div className="flex flex-wrap gap-3 md:gap-4">
+            <a
+              href="/projects"
+              className="pill-button border-foreground/10 px-5 py-2 font-mono text-[10px] transition-all hover:border-foreground/60 md:px-6"
+            >
+              PROJECTS
+            </a>
+            <a
+              href="/blog"
+              className="pill-button border-foreground/10 px-5 py-2 font-mono text-[10px] transition-all hover:border-foreground/60 md:px-6"
+            >
+              BLOG
+            </a>
+            <a
+              href="/stack"
+              className="pill-button border-foreground/10 px-5 py-2 font-mono text-[10px] transition-all hover:border-foreground/60 md:px-6"
+            >
+              STACK
+            </a>
             {socials.map((s) => (
               <a
                 key={s.label}
